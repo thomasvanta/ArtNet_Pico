@@ -27,22 +27,27 @@
 #endif
 
 // ── WS2811 outputs (GP0–GP7 → SN74LVC4245A → LEDs) ─────────────────────────
-#define WS2811_BASE_PIN     0       // first output pin; outputs on GP0, GP1, … GP(N-1)
-#define WS2811_NUM_OUTPUTS  6       // number of parallel universes
+#define LED_BASE_PIN     0       // first output pin; outputs on GP0, GP1, … GP(N-1)
+#define LED_NUM_OUTPUTS  8       // number of parallel universes
 
 // ── LED parameters ───────────────────────────────────────────────────────────
-#define LEDS_PER_UNIVERSE   170     // 512 DMX channels / 3  = 170 full RGB pixels
-#define WS2811_COLOR_RGB    1       // 1 = RGB order (WS2811), 0 = GRB order (WS2812)
+#define LED_TYPE            1       // 0 = RGBW order (SK6812) 1 = RGB order (WS2811), 2 = GRB order (WS2812)
+if (LED_TYPE == 0){
+  #define LEDS_PER_UNIVERSE   128     // 512 DMX channels / 4  = 128 full RGBW pixels
+} else {
+  #define LEDS_PER_UNIVERSE   170     // 512 DMX channels / 3  = 170 full RGB pixels
+// #define WS2811_COLOR_RGB    1       // 0 = RGBW order (SK6812) 1 = RGB order (WS2811), 2 = GRB order (WS2812)
+}
 
 // ── ArtNet ──────────────────────────────────────────────────────────────────
 #define ARTNET_PORT             6454
-#define ARTNET_UNIVERSE_START   0   // first ArtNet universe mapped to output 0
+#define ARTNET_UNIVERSE_START   3   // first ArtNet universe mapped to output 0
 
 // ── Network (adjust to your setup) ──────────────────────────────────────────
 #define NET_MAC     { 0x00, 0x08, 0xDC, 0xAB, 0xCD, 0xEF }
-#define NET_IP      { 192, 168, 1, 200 }
+#define NET_IP      { 10, 0, 1, 37 }
 #define NET_SUBNET  { 255, 255, 255, 0 }
-#define NET_GW      { 192, 168, 1, 1 }
+#define NET_GW      { 10, 0, 1, 1 }
 #define NET_DNS     { 8, 8, 8, 8 }
 
 // ── Internal ─────────────────────────────────────────────────────────────────

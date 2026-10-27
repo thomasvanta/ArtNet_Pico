@@ -1,10 +1,8 @@
-# WIZnet ioLibrary einrichten
+# WIZnet ioLibrary setup
 
 ```bash
-# Im Projektroot ausführen:
-git clone https://github.com/WIZnet-ioLibrary/ioLibrary_Driver lib/ioLibrary_Driver
-cd lib/ioLibrary_Driver
-git checkout W6300
+# In project's root:
+git submodule update --init --recursive
 ```
 
 Falls der W6300-Branch nicht existiert, als Alternative die kompletten

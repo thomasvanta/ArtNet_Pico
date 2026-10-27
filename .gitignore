@@ -9,5 +9,4 @@ CMakeFiles/
 *.dis
 *.hex
 *.pio.h
-lib/ioLibrary_Driver/
 .DS_Store
